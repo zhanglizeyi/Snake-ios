@@ -16,6 +16,11 @@
 		E4A744221C03B19F002EE38B /* SnakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A744211C03B19F002EE38B /* SnakeTests.swift */; };
 		E4A7443C1C03B5CD002EE38B /* Supporting files in Resources */ = {isa = PBXBuildFile; fileRef = E4A7443B1C03B5CD002EE38B /* Supporting files */; };
 		E4A7443D1C03B5CD002EE38B /* Supporting files in Resources */ = {isa = PBXBuildFile; fileRef = E4A7443B1C03B5CD002EE38B /* Supporting files */; };
+		E4A744451C0446C7002EE38B /* sStartingPage.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A744441C0446C7002EE38B /* sStartingPage.png */; };
+		E4A744471C0446FC002EE38B /* sHead.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A744461C0446FC002EE38B /* sHead.png */; };
+		E4A744491C044703002EE38B /* GameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A744481C044703002EE38B /* GameBackground.png */; };
+		E4A7444B1C044B8B002EE38B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A7444A1C044B8B002EE38B /* Game.swift */; };
+		E4A7444C1C044B8B002EE38B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A7444A1C044B8B002EE38B /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,10 @@
 		E4A744211C03B19F002EE38B /* SnakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeTests.swift; sourceTree = "<group>"; };
 		E4A744231C03B19F002EE38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4A7443B1C03B5CD002EE38B /* Supporting files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting files"; sourceTree = "<group>"; };
+		E4A744441C0446C7002EE38B /* sStartingPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sStartingPage.png; path = "Supporting files/sStartingPage.png"; sourceTree = "<group>"; };
+		E4A744461C0446FC002EE38B /* sHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sHead.png; path = "Supporting files/sHead.png"; sourceTree = "<group>"; };
+		E4A744481C044703002EE38B /* GameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameBackground.png; path = "Supporting files/GameBackground.png"; sourceTree = "<group>"; };
+		E4A7444A1C044B8B002EE38B /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = ../Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +93,15 @@
 			children = (
 				E4A744091C03B19F002EE38B /* AppDelegate.swift */,
 				E4A7440B1C03B19F002EE38B /* ViewController.swift */,
+				E4A7444A1C044B8B002EE38B /* Game.swift */,
 				E4A7440D1C03B19F002EE38B /* Main.storyboard */,
 				E4A744131C03B19F002EE38B /* Assets.xcassets */,
 				E4A744151C03B19F002EE38B /* LaunchScreen.storyboard */,
 				E4A744181C03B19F002EE38B /* Info.plist */,
 				E4A744101C03B19F002EE38B /* Snake.xcdatamodeld */,
+				E4A744441C0446C7002EE38B /* sStartingPage.png */,
+				E4A744461C0446FC002EE38B /* sHead.png */,
+				E4A744481C044703002EE38B /* GameBackground.png */,
 				E4A7443B1C03B5CD002EE38B /* Supporting files */,
 			);
 			path = Snake;
@@ -185,8 +198,11 @@
 			files = (
 				E4A744171C03B19F002EE38B /* LaunchScreen.storyboard in Resources */,
 				E4A744141C03B19F002EE38B /* Assets.xcassets in Resources */,
+				E4A744491C044703002EE38B /* GameBackground.png in Resources */,
 				E4A7443C1C03B5CD002EE38B /* Supporting files in Resources */,
+				E4A744451C0446C7002EE38B /* sStartingPage.png in Resources */,
 				E4A7440F1C03B19F002EE38B /* Main.storyboard in Resources */,
+				E4A744471C0446FC002EE38B /* sHead.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +224,7 @@
 				E4A744121C03B19F002EE38B /* Snake.xcdatamodeld in Sources */,
 				E4A7440C1C03B19F002EE38B /* ViewController.swift in Sources */,
 				E4A7440A1C03B19F002EE38B /* AppDelegate.swift in Sources */,
+				E4A7444B1C044B8B002EE38B /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4A744221C03B19F002EE38B /* SnakeTests.swift in Sources */,
+				E4A7444C1C044B8B002EE38B /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

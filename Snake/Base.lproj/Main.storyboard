@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First_Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Snake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="First_Page" id="BYZ-38-t0r" customClass="ViewController" customModule="Snake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,14 +15,82 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="First" image="sStartingPage.png" translatesAutoresizingMaskIntoConstraints="NO" id="kFo-Oa-HuU">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-Dk-fmf">
+                                <rect key="frame" x="341" y="209" width="207" height="91"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="sStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mUR-NO-7WL"/>
+                                    <segue destination="RrN-dz-JaJ" kind="modal" identifier="GamePage" id="XsO-ou-El9"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="StartingPage" destination="kFo-Oa-HuU" id="tkQ-On-VYq"/>
+                        <outlet property="sButton" destination="Vnn-Dk-fmf" id="u5z-V8-H7l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-162" y="14"/>
+        </scene>
+        <!--Game-->
+        <scene sceneID="OOQ-eO-YAI">
+            <objects>
+                <viewController id="RrN-dz-JaJ" customClass="Game" customModule="Snake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8cj-52-ygv"/>
+                        <viewControllerLayoutGuide type="bottom" id="MSO-il-RM3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="GamePage" id="EcW-Bn-4nC" customClass="UIImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sHead.png" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-0S-shR">
+                                <rect key="frame" x="105" y="68" width="20" height="20"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:  0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExP-VT-0j5">
+                                <rect key="frame" x="20" y="0.0" width="176" height="20"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ksc-wL-ggT"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="gameBackGround" destination="qeO-FU-hju" id="GFT-W3-pTD"/>
+                        <outlet property="sHead" destination="W1Q-0S-shR" id="wMP-gS-Zh3"/>
+                        <outlet property="sScoreLabel" destination="ExP-VT-0j5" id="L6J-QK-cen"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7p-2f-N4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-162" y="430"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="GameBackground.png" width="1230" height="600"/>
+        <image name="sHead.png" width="256" height="256"/>
+        <image name="sStartingPage.png" width="750" height="412"/>
+    </resources>
 </document>

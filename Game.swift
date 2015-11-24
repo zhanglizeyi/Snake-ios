@@ -11,6 +11,10 @@ import Foundation
 class Game: UIViewController{
   
   
+  @IBOutlet weak var downButtonDisplay: UIButton!
+  @IBOutlet weak var leftButtonDisplay: UIButton!
+  @IBOutlet weak var upButtonDisplay: UIButton!
+  @IBOutlet weak var rightButtonDisplay: UIButton!
   @IBOutlet weak var startButton: UIButton!
   @IBOutlet weak var sScoreLabel: UILabel!
   @IBOutlet weak var sHead: UIImageView!
@@ -21,9 +25,49 @@ class Game: UIViewController{
   var snake: [UIImageView] = [];
   //point
   var point = 0;
+  //location
+  var location = CGPoint(x: 0,y: 0);
+  var cgfloat = CGFloat(20);
+
+
   
+  
+  @IBAction func leftButton(sender: AnyObject){
+//    var destX:CGFloat = self.view.bounds.width / 2;
+//    UIView.animateWithDuration(Float(0.5), delay: 1.0, animations: {
+//    self.sHead.center.x})
+//      completion: nil);
+    //print(startButton.hidden);
+    
+    if(startButton.hidden){
+      print("left");
+      sHead.frame.origin.x -= cgfloat;
+    }
+  }
+  
+  @IBAction func rightButton(sender: AnyObject){
+    if(startButton.hidden){
+      print("right");
+      sHead.frame.origin.x += cgfloat;
+    }
+  }
+  
+  @IBAction func upButton(sender: AnyObject){
+    if(startButton.hidden){
+      print("up");
+      sHead.frame.origin.y -= cgfloat;
+    }
+  }
+  
+  @IBAction func downButton(sender: AnyObject){
+    if(startButton.hidden){
+      print("down");
+      sHead.frame.origin.y += cgfloat;
+    }
+  }
   
   @IBAction func sGameStratingButton(sender: AnyObject) {
+    
     
     //startingButton has be hidden and snake move around
     if(startButton.hidden == false){
@@ -31,18 +75,18 @@ class Game: UIViewController{
       print("startButton is hidden");
       
       //snake movement
-      UIImageView.animateWithDuration(0.1, delay: 1.0, options: UIViewAnimationOptions.CurveLinear, animations:{ self.sHead.frame.origin.x = 1.0; self.sHead.alpha = 1 }, completion:{
-          (startButton) in self.sHead.transform = CGAffineTransformMakeRotation(0)});
+//      UIImageView.animateWithDuration(0.1, delay: 1.0, options: nil, animations:{ self.sHead.frame.origin.x = 1.0 }, completion: nil);
       
       
       for var i=0; i<snake.count; i++ {
-        print(snake);
+        print(snake[0].frame.origin.x);
+        print("\(self.sHead.center.x)")
       }
       
      // NSRunLoop.currentRunLoop().addTimer(snakeTimer, forMode: NSRunLoopCommonModes);
       
       let sPoint = String(point);
-      self.sScoreLabel.text = "Score: \(sPoint)";
+      self.sScoreLabel.text = "Score:  \(sPoint)";
       
       checkBoundry(gameBackGround);
     }
@@ -74,7 +118,7 @@ class Game: UIViewController{
     //binaryCount = 0b0000;
     
     //restart game
-    //startButton.hidden = false;
+    startButton.hidden = false;
   }
   
   
@@ -92,7 +136,11 @@ class Game: UIViewController{
     self.view.addSubview(startButton);
     self.view.addSubview(sHead);
     self.view.addSubview(sScoreLabel);
-    
+    self.view.addSubview(rightButtonDisplay);
+    self.view.addSubview(leftButtonDisplay);
+    self.view.addSubview(upButtonDisplay);
+    self.view.addSubview(downButtonDisplay);
+
   }
   
   override func didReceiveMemoryWarning() {

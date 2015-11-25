@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E44DD1201C059D1C005AD838 /* sBody.png in Resources */ = {isa = PBXBuildFile; fileRef = E44DD11F1C059D1C005AD838 /* sBody.png */; };
 		E4A7440A1C03B19F002EE38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A744091C03B19F002EE38B /* AppDelegate.swift */; };
 		E4A7440C1C03B19F002EE38B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A7440B1C03B19F002EE38B /* ViewController.swift */; };
 		E4A7440F1C03B19F002EE38B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A7440D1C03B19F002EE38B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E44DD11F1C059D1C005AD838 /* sBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sBody.png; path = "Supporting files/sBody.png"; sourceTree = "<group>"; };
 		E4A744061C03B19F002EE38B /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A744091C03B19F002EE38B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A7440B1C03B19F002EE38B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				E4A744441C0446C7002EE38B /* sStartingPage.png */,
 				E4A744461C0446FC002EE38B /* sHead.png */,
 				E4A744481C044703002EE38B /* GameBackground.png */,
+				E44DD11F1C059D1C005AD838 /* sBody.png */,
 				E4A7443B1C03B5CD002EE38B /* Supporting files */,
 			);
 			path = Snake;
@@ -202,6 +205,7 @@
 				E4A744491C044703002EE38B /* GameBackground.png in Resources */,
 				E4A7443C1C03B5CD002EE38B /* Supporting files in Resources */,
 				E4A744451C0446C7002EE38B /* sStartingPage.png in Resources */,
+				E44DD1201C059D1C005AD838 /* sBody.png in Resources */,
 				E4A7440F1C03B19F002EE38B /* Main.storyboard in Resources */,
 				E4A744471C0446FC002EE38B /* sHead.png in Resources */,
 			);

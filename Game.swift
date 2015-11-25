@@ -10,7 +10,7 @@ import Foundation
 
 class Game: UIViewController{
   
-  
+  @IBOutlet weak var snakeBody: UIImageView!
   @IBOutlet weak var downButtonDisplay: UIButton!
   @IBOutlet weak var leftButtonDisplay: UIButton!
   @IBOutlet weak var upButtonDisplay: UIButton!
@@ -22,32 +22,32 @@ class Game: UIViewController{
   
   //var snakeTimer = NSTimer();
   //var binaryCount = 0b0000;
+  //boolean for checkDirection
+  var upDirection = false;
+  var downDirection = false;
+  var rightDirection = false;
+  var leftDirection = false;
   //snake array
   var snake: [UIImageView] = [];
-  
   //point
   var point = 0;
-  
   //location5
   var cgfloat = CGFloat(20);
-  
   //rect 
   var Rect = UIView(frame: CGRectMake(20,20,520,280));
 
   
-  
-  
   @IBAction func leftButton(sender: AnyObject){
-//    var destX:CGFloat = self.view.bounds.width / 2;
-//    UIView.animateWithDuration(Float(0.5), delay: 1.0, animations: {
-//    self.sHead.center.x})
-//      completion: nil);
-    //print(startButton.hidden);
-    
     if(startButton.hidden){
       print("left");
       sHead.frame.origin.x -= cgfloat;
       checkBoundary(Rect);
+      
+      upDirection = false;
+      downDirection = false;
+      rightDirection = false;
+      leftDirection = true;
+      growth(snakeBody);
     }
   }
   
@@ -56,6 +56,12 @@ class Game: UIViewController{
       print("right");
       sHead.frame.origin.x += cgfloat;
       checkBoundary(Rect);
+      
+      upDirection = false;
+      downDirection = false;
+      rightDirection = true;
+      leftDirection = false;
+      growth(snakeBody);
     }
   }
   
@@ -64,6 +70,12 @@ class Game: UIViewController{
       print("up");
       sHead.frame.origin.y -= cgfloat;
       checkBoundary(Rect);
+      
+      upDirection = true;
+      downDirection = false;
+      rightDirection = false;
+      leftDirection = false;
+      
     }
   }
   
@@ -72,12 +84,15 @@ class Game: UIViewController{
       print("down");
       sHead.frame.origin.y += cgfloat;
       checkBoundary(Rect);
+
+      upDirection = false;
+      downDirection = true;
+      rightDirection = false;
+      leftDirection = false;
     }
   }
   
   @IBAction func sGameStratingButton(sender: AnyObject) {
-    
-    
     //startingButton has be hidden and snake move around
     if(startButton.hidden == false){
       startButton.hidden = true;
@@ -93,7 +108,22 @@ class Game: UIViewController{
       self.sScoreLabel.text = "Score:  \(sPoint)";
       checkBoundary(Rect);
     }
-    
+  }
+  
+  func growth(x: UIImageView){
+    if(rightDirection){
+      if(sHead.frame.origin.x == (x.frame.origin.x + 20.0) &&
+          sHead.frame.origin.y == x.frame.origin.y ){
+            snakeBody.frame.origin.x += 20;
+      }
+    }
+    if(leftDirection){
+      if(sHead.frame.origin.x == (x.frame.origin.x - 20.0) &&
+        sHead.frame.origin.y == x.frame.origin.y){
+      }
+    }
+    if(upDirection){}
+    if(downDirection){}
   }
   
   //checkBoundary
@@ -105,13 +135,7 @@ class Game: UIViewController{
       else if(snake[0].frame.origin.y < x.frame.origin.y ||
         snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
-  
-  func reset(){
-    //restart game
-    startButton.hidden = false;
-    viewDidLoad();
-  }
-  
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -128,13 +152,14 @@ class Game: UIViewController{
     
     self.view.addSubview(gameBackGround);
     self.view.addSubview(Rect);
-    self.view.addSubview(startButton);
-    self.view.addSubview(sHead);
-    self.view.addSubview(sScoreLabel);
     self.view.addSubview(rightButtonDisplay);
     self.view.addSubview(leftButtonDisplay);
     self.view.addSubview(upButtonDisplay);
     self.view.addSubview(downButtonDisplay);
+    self.view.addSubview(sScoreLabel);
+    self.view.addSubview(startButton);
+    self.view.addSubview(snakeBody);
+    self.view.addSubview(sHead);
     
   }
   
@@ -143,6 +168,11 @@ class Game: UIViewController{
     // Dispose of any resources that can be recreated.
   }
   
+  func reset(){
+    //restart game
+    startButton.hidden = false;
+    viewDidLoad();
+  }
   
 
 }

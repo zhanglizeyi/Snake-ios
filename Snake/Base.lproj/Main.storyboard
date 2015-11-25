@@ -78,6 +78,10 @@
                                     <action selector="sGameStratingButton:" destination="RrN-dz-JaJ" eventType="touchUpInside" id="jTZ-Pp-3cR"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <animations/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-Ab-eA7">
                                 <rect key="frame" x="455" y="208" width="30" height="30"/>
                                 <animations/>
@@ -110,8 +114,8 @@
                                     <action selector="rightButton:" destination="RrN-dz-JaJ" eventType="touchDown" id="hUL-3c-2W1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sBody.png" translatesAutoresizingMaskIntoConstraints="NO" id="uqi-Bm-BPC">
+                                <rect key="frame" x="420" y="100" width="20" height="20"/>
                                 <animations/>
                             </imageView>
                         </subviews>
@@ -128,17 +132,19 @@
                         <outlet property="rightButtonDisplay" destination="a4U-PT-HWm" id="Kk3-an-mbH"/>
                         <outlet property="sHead" destination="W1Q-0S-shR" id="OYe-GS-xhL"/>
                         <outlet property="sScoreLabel" destination="ExP-VT-0j5" id="L6J-QK-cen"/>
+                        <outlet property="snakeBody" destination="uqi-Bm-BPC" id="WeF-tv-k0k"/>
                         <outlet property="startButton" destination="pwf-QG-IJo" id="DDm-k7-B2l"/>
                         <outlet property="upButtonDisplay" destination="CGM-Ab-eA7" id="zSn-Xt-g9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7p-2f-N4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197" y="406"/>
+            <point key="canvasLocation" x="161" y="436"/>
         </scene>
     </scenes>
     <resources>
         <image name="GameBackground.png" width="1230" height="600"/>
+        <image name="sBody.png" width="256" height="256"/>
         <image name="sHead.png" width="256" height="256"/>
         <image name="sStartingPage.png" width="750" height="412"/>
     </resources>

@@ -35,6 +35,15 @@ class Game: UIViewController{
   var cgfloat = CGFloat(20);
   //rect 
   var Rect = UIView(frame: CGRectMake(20,20,520,280));
+  var sBodayImage = UIImageView();
+  let SNAKEWITH = CGFloat(20);
+  let SNAKEHEIGHT = CGFloat(20);
+
+  struct Variable{
+    //Random snake body appear
+//    let SNAKEWITH = CGFloat(20);
+//    let SNAKEHEIGHT = CGFloat(20);
+  }
 
   
   @IBAction func leftButton(sender: AnyObject){
@@ -62,6 +71,7 @@ class Game: UIViewController{
       rightDirection = true;
       leftDirection = false;
       growth(snakeBody);
+      RandomSnakeBody();
     }
   }
   
@@ -149,6 +159,7 @@ class Game: UIViewController{
     snake += [sHead];
     Rect.layer.borderWidth = 1.0;
     Rect.layer.borderColor = UIColor.blackColor().CGColor;
+
     
     self.view.addSubview(gameBackGround);
     self.view.addSubview(Rect);
@@ -160,12 +171,33 @@ class Game: UIViewController{
     self.view.addSubview(startButton);
     self.view.addSubview(snakeBody);
     self.view.addSubview(sHead);
-    
+    self.view.addSubview(sBodayImage);
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  func RandomSnakeBody(){
+    let tempX = [20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520];
+    let tempY = [20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320];
+    var X = arc4random_uniform(520);
+    var Y = arc4random_uniform(280);
+    
+    while(!(tempX.contains(Int(X)))){
+      X = arc4random_uniform(520);
+    }
+    
+    while(!(tempY.contains(Int(Y)))){
+      Y = arc4random_uniform(280);
+    }
+    
+    let rX = CGFloat(X);
+    let rY = CGFloat(Y);
+    
+    sBodayImage.frame = CGRectMake(rX,rY,SNAKEWITH,SNAKEHEIGHT);
+    sBodayImage.layer.backgroundColor = UIColor.greenColor().CGColor;
   }
   
   func reset(){

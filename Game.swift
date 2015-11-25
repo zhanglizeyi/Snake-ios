@@ -19,17 +19,22 @@ class Game: UIViewController{
   @IBOutlet weak var sScoreLabel: UILabel!
   @IBOutlet weak var sHead: UIImageView!
   @IBOutlet weak var gameBackGround: UIImageView!
+  
   //var snakeTimer = NSTimer();
   //var binaryCount = 0b0000;
   //snake array
   var snake: [UIImageView] = [];
+  
   //point
   var point = 0;
-  //location
-  var location = CGPoint(x: 0,y: 0);
+  
+  //location5
   var cgfloat = CGFloat(20);
+  
+  //rect 
+  var Rect = UIView(frame: CGRectMake(20,20,520,280));
 
-
+  
   
   
   @IBAction func leftButton(sender: AnyObject){
@@ -42,6 +47,7 @@ class Game: UIViewController{
     if(startButton.hidden){
       print("left");
       sHead.frame.origin.x -= cgfloat;
+      checkBoundary(Rect);
     }
   }
   
@@ -49,6 +55,7 @@ class Game: UIViewController{
     if(startButton.hidden){
       print("right");
       sHead.frame.origin.x += cgfloat;
+      checkBoundary(Rect);
     }
   }
   
@@ -56,6 +63,7 @@ class Game: UIViewController{
     if(startButton.hidden){
       print("up");
       sHead.frame.origin.y -= cgfloat;
+      checkBoundary(Rect);
     }
   }
   
@@ -63,6 +71,7 @@ class Game: UIViewController{
     if(startButton.hidden){
       print("down");
       sHead.frame.origin.y += cgfloat;
+      checkBoundary(Rect);
     }
   }
   
@@ -74,51 +83,33 @@ class Game: UIViewController{
       startButton.hidden = true;
       print("startButton is hidden");
       
-      //snake movement
-//      UIImageView.animateWithDuration(0.1, delay: 1.0, options: nil, animations:{ self.sHead.frame.origin.x = 1.0 }, completion: nil);
-      
       
       for var i=0; i<snake.count; i++ {
         print(snake[0].frame.origin.x);
         print("\(self.sHead.center.x)")
       }
       
-     // NSRunLoop.currentRunLoop().addTimer(snakeTimer, forMode: NSRunLoopCommonModes);
-      
       let sPoint = String(point);
       self.sScoreLabel.text = "Score:  \(sPoint)";
-      
-      checkBoundry(gameBackGround);
+      checkBoundary(Rect);
     }
     
   }
   
-  
-  func checkBoundry(x: UIImageView){
-    //while(true){
-      if(snake[0].frame.origin.x == 0 || snake[0].frame.origin.x == 568.0){
-        reset();
-      }else if(snake[0].frame.origin.y == 0 || snake[0].frame.origin.y == 320.0){
-        reset();
-      }
-    //}
+  //checkBoundary
+  func checkBoundary(x: UIView){
+    
+      if(snake[0].frame.origin.x < x.frame.origin.x ||
+        snake[0].frame.origin.x > x.frame.width){ reset(); }
+      
+      else if(snake[0].frame.origin.y < x.frame.origin.y ||
+        snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
   
-  //helper method for counting timer
-//  func countUp(){
-//    
-//    binaryCount += 0b0001;
-//    if(binaryCount == 0b0001){
-//      binaryCount = 0b0000;
-//    }
-//  }
-  
   func reset(){
-    //snakeTimer.invalidate();
-    //binaryCount = 0b0000;
-    
     //restart game
     startButton.hidden = false;
+    viewDidLoad();
   }
   
   
@@ -132,7 +123,11 @@ class Game: UIViewController{
     
     startButton.hidden = false;
     snake += [sHead];
+    Rect.layer.borderWidth = 1.0;
+    Rect.layer.borderColor = UIColor.blackColor().CGColor;
+    
     self.view.addSubview(gameBackGround);
+    self.view.addSubview(Rect);
     self.view.addSubview(startButton);
     self.view.addSubview(sHead);
     self.view.addSubview(sScoreLabel);
@@ -140,7 +135,7 @@ class Game: UIViewController{
     self.view.addSubview(leftButtonDisplay);
     self.view.addSubview(upButtonDisplay);
     self.view.addSubview(downButtonDisplay);
-
+    
   }
   
   override func didReceiveMemoryWarning() {

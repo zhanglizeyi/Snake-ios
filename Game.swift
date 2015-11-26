@@ -40,9 +40,6 @@ class Game: UIViewController{
   let SNAKEHEIGHT = CGFloat(20);
 
   struct Variable{
-    //Random snake body appear
-    //let SNAKEWITH = CGFloat(20);
-    //let SNAKEHEIGHT = CGFloat(20);
   }
 
   @IBAction func leftButton(sender: AnyObject){
@@ -56,11 +53,6 @@ class Game: UIViewController{
       rightDirection = false;
       leftDirection = true;
       growth(snakeBody);
-      
-      for var i=0; i<snake.count; i++ {
-        print(snake[i]);
-        //print("\(self.sHead.center.x)")
-      }
     }
   }
   
@@ -88,7 +80,6 @@ class Game: UIViewController{
       downDirection = false;
       rightDirection = false;
       leftDirection = false;
-      
     }
   }
   
@@ -102,6 +93,7 @@ class Game: UIViewController{
       downDirection = true;
       rightDirection = false;
       leftDirection = false;
+     
     }
   }
   
@@ -114,7 +106,7 @@ class Game: UIViewController{
       let sPoint = String(point);
       self.sScoreLabel.text = "Score:  \(sPoint)";
       checkBoundary(Rect);
-      animation();
+      
     }
   }
   
@@ -127,7 +119,7 @@ class Game: UIViewController{
             snakeBody.hidden = true;
             //add animation
             }
-          RandomSnakeBody();
+          //RandomSnakeBody();
     }
     if(leftDirection){
       if(sHead.frame.origin.x == (x.frame.origin.x - 20.0) &&
@@ -151,12 +143,30 @@ class Game: UIViewController{
   
 
   func animation(){
-    UIView.animateWithDuration(1.0,delay: 0.5, options: [ .CurveLinear ], animations: {
-      
-          self.sHead.frame = CGRectMake(self.Rect.frame.width,self.sHead.frame.origin.y,20,20);
-      
-      }, completion: nil );
     
+//    if(rightDirection){
+//      UIView.animateWithDuration(5.0, animations: {
+//        
+//            self.sHead.frame = CGRectMake(self.Rect.frame.width+1,self.sHead.frame.origin.y,20,20);
+//        }, completion: nil );
+//    }
+//    if(leftDirection){
+//      UIView.animateWithDuration(5.0, animations: {
+//        
+//        self.sHead.frame = CGRectMake(self.Rect.frame.origin.x-1,self.sHead.frame.origin.y,20,20);
+//        }, completion: nil );
+//    }
+//    if(upDirection){
+//      UIView.animateWithDuration(5.0, animations: {
+//        self.sHead.frame = CGRectMake(self.Rect.frame.origin.x,self.Rect.frame.origin.y,20,20);
+//        }, completion: nil );
+//    }
+//    if(downDirection){
+//      UIView.animateWithDuration(5.0, animations: {
+//        self.sHead.frame = CGRectMake(self.sHead.frame.origin.x,self.Rect.frame.height,20,20);
+//        }, completion: nil );
+//  }
+  
     
 //    UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveLinear, animations:{
 //        self.sHead.frame.origin.x -= Rect.frame.width;
@@ -193,7 +203,7 @@ class Game: UIViewController{
   }
   
   override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+    super.didReceiveMemoryWarning();
     // Dispose of any resources that can be recreated.
   }
   

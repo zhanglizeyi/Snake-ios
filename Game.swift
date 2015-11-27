@@ -18,6 +18,10 @@ class Game: UIViewController{
   @IBOutlet weak var startButton: UIButton!
   @IBOutlet weak var sScoreLabel: UILabel!
   @IBOutlet weak var sHead: UIImageView!
+  @IBOutlet weak var sHead1: UIImageView!
+  @IBOutlet weak var sHead2: UIImageView!
+  @IBOutlet weak var sHead3: UIImageView!
+  @IBOutlet weak var sHead4: UIImageView!
   @IBOutlet weak var gameBackGround: UIImageView!
   
   //var snakeTimer = NSTimer();
@@ -35,7 +39,7 @@ class Game: UIViewController{
   var cgfloat = CGFloat(20);
   //rect 
   var Rect = UIView(frame: CGRectMake(20,20,520,280));
-  var sBodayImage = UIImageView();
+  var sBodyImage = UIImageView();
   let SNAKEWITH = CGFloat(20);
   let SNAKEHEIGHT = CGFloat(20);
   //timer
@@ -60,7 +64,6 @@ class Game: UIViewController{
       downDirection = false;
       rightDirection = false;
       leftDirection = true;
-      
     }
   }
   
@@ -116,7 +119,10 @@ class Game: UIViewController{
       print("startButton is hidden");
       //point in game
       
-      snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
+      //animation loop for snake moving inside 
+      snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3,
+        target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
+      
       
       checkBoundary(Rect);
     }
@@ -140,7 +146,7 @@ class Game: UIViewController{
             //add animation
             }
           //RandomSnakeBody();
-    }
+     }
     if(leftDirection){
       if(sHead.frame.origin.x == (x.frame.origin.x - 20.0) &&
         sHead.frame.origin.y == x.frame.origin.y){
@@ -153,10 +159,10 @@ class Game: UIViewController{
   
   //checkBoundary
   func checkBoundary(x: UIView){
-      if(snake[0].frame.origin.x < x.frame.origin.x ||
-        snake[0].frame.origin.x > x.frame.width){ reset(); }
-      else if(snake[0].frame.origin.y < x.frame.origin.y ||
-        snake[0].frame.origin.y > x.frame.height){ reset(); }
+//      if(snake[0].frame.origin.x < x.frame.origin.x ||
+//        snake[0].frame.origin.x > x.frame.width){ reset(); }
+//      else if(snake[0].frame.origin.y < x.frame.origin.y ||
+//        snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
   
   //snake Movement
@@ -164,10 +170,17 @@ class Game: UIViewController{
     let sX = self.sHead.frame.origin.x;
     let sY = self.sHead.frame.origin.y;
     //let sSize = self.sHead.frame.size;
+    sHead3.frame = CGRectMake(sHead2.frame.origin.x, sHead2.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
+    sHead2.frame = CGRectMake(sHead1.frame.origin.x, sHead1.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
+    sHead1.frame = CGRectMake(sHead.frame.origin.x, sHead.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
     sHead.frame = CGRectMake(sX+dx, sY+dy, SNAKEWITH, SNAKEHEIGHT);
+    
+    if(CGRectIntersectsRect(sHead.frame, snakeBody.frame)){
+      print("The snake head has collision with food");
+    }
+    
+    //sHead4.frame = CGRectMake(sHead3.frame.origin.x, sHead3.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
   }
-  
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -178,7 +191,7 @@ class Game: UIViewController{
     //    self.view.addSubview(imageview);
     
     startButton.hidden = false;
-    snake += [sHead];
+    //snake += [sHead];
     Rect.layer.borderWidth = 1.0;
     Rect.layer.borderColor = UIColor.blackColor().CGColor;
     
@@ -191,8 +204,11 @@ class Game: UIViewController{
     self.view.addSubview(sScoreLabel);
     self.view.addSubview(startButton);
     self.view.addSubview(snakeBody);
-    self.view.addSubview(sBodayImage);
+    self.view.addSubview(sBodyImage);
     self.view.addSubview(sHead);
+    self.view.addSubview(sHead1);
+    self.view.addSubview(sHead2);
+    self.view.addSubview(sHead3);
   }
   
   override func didReceiveMemoryWarning() {
@@ -218,8 +234,8 @@ class Game: UIViewController{
     let rX = CGFloat(X);
     let rY = CGFloat(Y);
     
-    sBodayImage.frame = CGRectMake(rX,rY,SNAKEWITH,SNAKEHEIGHT);
-    sBodayImage.layer.backgroundColor = UIColor.greenColor().CGColor;
+    sBodyImage.frame = CGRectMake(rX,rY,SNAKEWITH,SNAKEHEIGHT);
+    sBodyImage.layer.backgroundColor = UIColor.greenColor().CGColor;
   }
   
   func reset(){

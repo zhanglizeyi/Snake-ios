@@ -78,10 +78,6 @@
                                     <action selector="sGameStratingButton:" destination="RrN-dz-JaJ" eventType="touchUpInside" id="jTZ-Pp-3cR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                                <animations/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-Ab-eA7">
                                 <rect key="frame" x="455" y="208" width="30" height="30"/>
                                 <animations/>
@@ -118,6 +114,22 @@
                                 <rect key="frame" x="420" y="100" width="20" height="20"/>
                                 <animations/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sHead.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAp-eV-VdG">
+                                <rect key="frame" x="140" y="60" width="20" height="20"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sHead.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hn2-dJ-ymd">
+                                <rect key="frame" x="120" y="60" width="20" height="20"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sHead.png" translatesAutoresizingMaskIntoConstraints="NO" id="sWe-bD-MZd">
+                                <rect key="frame" x="100" y="60" width="20" height="20"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
+                                <rect key="frame" x="0.0" y="252" width="568" height="320"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,6 +143,9 @@
                         <outlet property="leftButtonDisplay" destination="BvF-af-vXI" id="vMm-fB-Duf"/>
                         <outlet property="rightButtonDisplay" destination="a4U-PT-HWm" id="Kk3-an-mbH"/>
                         <outlet property="sHead" destination="W1Q-0S-shR" id="OYe-GS-xhL"/>
+                        <outlet property="sHead1" destination="tAp-eV-VdG" id="sJE-fq-JAd"/>
+                        <outlet property="sHead2" destination="Hn2-dJ-ymd" id="zNh-4r-R3x"/>
+                        <outlet property="sHead3" destination="sWe-bD-MZd" id="eL3-ED-dzK"/>
                         <outlet property="sScoreLabel" destination="ExP-VT-0j5" id="L6J-QK-cen"/>
                         <outlet property="snakeBody" destination="uqi-Bm-BPC" id="WeF-tv-k0k"/>
                         <outlet property="startButton" destination="pwf-QG-IJo" id="DDm-k7-B2l"/>

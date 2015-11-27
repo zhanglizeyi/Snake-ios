@@ -38,6 +38,9 @@ class Game: UIViewController{
   var sBodayImage = UIImageView();
   let SNAKEWITH = CGFloat(20);
   let SNAKEHEIGHT = CGFloat(20);
+  //timer
+  var snakeTimer = NSTimer();
+  
 
   struct Variable{
   }
@@ -102,14 +105,22 @@ class Game: UIViewController{
     if(startButton.hidden == false){
       startButton.hidden = true;
       print("startButton is hidden");
+      //point in game
       
-      let sPoint = String(point);
-      self.sScoreLabel.text = "Score:  \(sPoint)";
+      snakeTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
+      
       checkBoundary(Rect);
-      
     }
   }
   
+  //function of score update
+  func scoreUpdate(){
+    let sPoint = String(point);
+    self.sScoreLabel.text = "Score:  \(sPoint)";
+  }
+  
+  
+  //function of snake growth
   func growth(x: UIImageView){
     if(rightDirection){
       if(sHead.frame.origin.x == (x.frame.origin.x + 20.0) &&
@@ -133,48 +144,21 @@ class Game: UIViewController{
   
   //checkBoundary
   func checkBoundary(x: UIView){
-    
       if(snake[0].frame.origin.x < x.frame.origin.x ||
         snake[0].frame.origin.x > x.frame.width){ reset(); }
-      
       else if(snake[0].frame.origin.y < x.frame.origin.y ||
         snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
   
-
-  func animation(){
-    
-//    if(rightDirection){
-//      UIView.animateWithDuration(5.0, animations: {
-//        
-//            self.sHead.frame = CGRectMake(self.Rect.frame.width+1,self.sHead.frame.origin.y,20,20);
-//        }, completion: nil );
-//    }
-//    if(leftDirection){
-//      UIView.animateWithDuration(5.0, animations: {
-//        
-//        self.sHead.frame = CGRectMake(self.Rect.frame.origin.x-1,self.sHead.frame.origin.y,20,20);
-//        }, completion: nil );
-//    }
-//    if(upDirection){
-//      UIView.animateWithDuration(5.0, animations: {
-//        self.sHead.frame = CGRectMake(self.Rect.frame.origin.x,self.Rect.frame.origin.y,20,20);
-//        }, completion: nil );
-//    }
-//    if(downDirection){
-//      UIView.animateWithDuration(5.0, animations: {
-//        self.sHead.frame = CGRectMake(self.sHead.frame.origin.x,self.Rect.frame.height,20,20);
-//        }, completion: nil );
-//  }
+  //snake Movement
+  func snakeMoving(){
+    let sX = self.sHead.frame.origin.x;
+    let sY = self.sHead.frame.origin.y;
   
-    
-//    UIView.animateWithDuration(0.5, delay: 1.0, options: UIViewAnimationOptions.CurveLinear, animations:{
-//        self.sHead.frame.origin.x -= Rect.frame.width;
-//      },completion:  { _ in
-//        self.startButton.hidden = true;
-//      });
+    sHead.frame = CGRectMake(sX+30, sY, SNAKEWITH, SNAKEHEIGHT);
   }
-
+  
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -208,7 +192,8 @@ class Game: UIViewController{
   }
   
   func RandomSnakeBody(){
-    let tempX = [20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500,520];
+    let tempX = [20,40,60,80,100,120,140,160,180,200,220,
+      240,260,280,300,320,340,360,380,400,420,440,460,480,500,520];
     let tempY = [20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320];
     var X = arc4random_uniform(520);
     var Y = arc4random_uniform(280);

@@ -40,6 +40,9 @@ class Game: UIViewController{
   let SNAKEHEIGHT = CGFloat(20);
   //timer
   var snakeTimer = NSTimer();
+  //direction of changing movement
+  var dx = CGFloat(20);
+  var dy = CGFloat(0);
   
 
   struct Variable{
@@ -48,35 +51,40 @@ class Game: UIViewController{
   @IBAction func leftButton(sender: AnyObject){
     if(startButton.hidden){
       print("left");
-      sHead.frame.origin.x -= cgfloat;
+      //sHead.frame.origin.x -= cgfloat;
+      dy = 0;
+      dx = -20;
       checkBoundary(Rect);
-      
+    
       upDirection = false;
       downDirection = false;
       rightDirection = false;
       leftDirection = true;
-      growth(snakeBody);
+      
     }
   }
   
   @IBAction func rightButton(sender: AnyObject){
     if(startButton.hidden){
       print("right");
-      sHead.frame.origin.x += cgfloat;
+      //sHead.frame.origin.x += cgfloat;
+      dy = 0;
+      dx = 20;
       checkBoundary(Rect);
       
       upDirection = false;
       downDirection = false;
       rightDirection = true;
       leftDirection = false;
-      growth(snakeBody);
     }
   }
   
   @IBAction func upButton(sender: AnyObject){
     if(startButton.hidden){
       print("up");
-      sHead.frame.origin.y -= cgfloat;
+      //sHead.frame.origin.y -= cgfloat;
+      dx = 0;
+      dy = -20;
       checkBoundary(Rect);
       
       upDirection = true;
@@ -89,14 +97,15 @@ class Game: UIViewController{
   @IBAction func downButton(sender: AnyObject){
     if(startButton.hidden){
       print("down");
-      sHead.frame.origin.y += cgfloat;
+      //sHead.frame.origin.y += cgfloat;
+      dx = 0;
+      dy = 20;
       checkBoundary(Rect);
 
       upDirection = false;
       downDirection = true;
       rightDirection = false;
       leftDirection = false;
-     
     }
   }
   
@@ -107,7 +116,7 @@ class Game: UIViewController{
       print("startButton is hidden");
       //point in game
       
-      snakeTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
+      snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
       
       checkBoundary(Rect);
     }
@@ -154,8 +163,8 @@ class Game: UIViewController{
   func snakeMoving(){
     let sX = self.sHead.frame.origin.x;
     let sY = self.sHead.frame.origin.y;
-  
-    sHead.frame = CGRectMake(sX+30, sY, SNAKEWITH, SNAKEHEIGHT);
+    //let sSize = self.sHead.frame.size;
+    sHead.frame = CGRectMake(sX+dx, sY+dy, SNAKEWITH, SNAKEHEIGHT);
   }
   
   

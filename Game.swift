@@ -51,6 +51,48 @@ class Game: UIViewController{
 
   struct Variable{
   }
+  
+  /**************************
+   *                        *
+   * Direction: (method)    *
+   * MoveLeft, MoveRight,   *
+   * MoveUp, MoveDown       *
+   *                        *
+   **************************/
+  
+  func  MoveLeft(){
+    if(startButton.hidden){
+      dy = 0;
+      dx = -20;
+      startButton.hidden = true;
+    }
+  }
+  
+  func  MoveRight(){
+    if(startButton.hidden){
+      dy = 0;
+      dx = 20;
+      startButton.hidden = true;
+    }
+  }
+  
+  func  MoveUp(){
+    if(startButton.hidden){
+      dy = -20;
+      dx = 0;
+      startButton.hidden = true;
+    }
+  }
+  
+  func  MoveDown(){
+    if(startButton.hidden){
+      dy = 20;
+      dx = 0;
+      startButton.hidden = true;
+    }
+  }
+  
+  ///////////////////////////////////////
 
   @IBAction func leftButton(sender: AnyObject){
     if(startButton.hidden){
@@ -112,6 +154,18 @@ class Game: UIViewController{
     }
   }
   
+  
+  /**************************
+   *                        *
+   * Game Starting Button:  *
+   * (method)               *
+   * Action Button to run   *
+   * Boolean to check       *
+   * NSTimer: to call snake *
+   *   moving method        *
+   *                        *
+   **************************/
+
   @IBAction func sGameStratingButton(sender: AnyObject) {
     //startingButton has be hidden and snake move around
     if(startButton.hidden == false){
@@ -119,23 +173,37 @@ class Game: UIViewController{
       print("startButton is hidden");
       //point in game
       
-      //animation loop for snake moving inside 
+      //animation loop for snake moving inside
       snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3,
         target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
-      
       
       checkBoundary(Rect);
     }
   }
   
-  //function of score update
+  /**************************
+   *                        *
+   * Game Score: (method)   *
+   * tracking the score     *
+   * update score whenever  *
+   * snake hits the food    *
+   *                        *
+   **************************/
+  
   func scoreUpdate(){
     let sPoint = String(point);
     self.sScoreLabel.text = "Score:  \(sPoint)";
   }
   
-  
-  //function of snake growth
+  /**************************
+   *                        *
+   * Snake Growth: (method) *
+   *   direction update     *
+   *  to check if snake     *
+   *  need body added       *
+   *                        *
+   **************************/
+
   func growth(x: UIImageView){
     if(rightDirection){
       if(sHead.frame.origin.x == (x.frame.origin.x + 20.0) &&
@@ -157,7 +225,16 @@ class Game: UIViewController{
     if(downDirection){}
   }
   
-  //checkBoundary
+  /**************************
+   *                        *
+   * Boundary: (method)     *
+   * check each boundary    *
+   * if the snake hit       *
+   * boundray, then need    *
+   * restart new game       *
+   *                        *
+   **************************/
+ 
   func checkBoundary(x: UIView){
 //      if(snake[0].frame.origin.x < x.frame.origin.x ||
 //        snake[0].frame.origin.x > x.frame.width){ reset(); }
@@ -165,7 +242,19 @@ class Game: UIViewController{
 //        snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
   
-  //snake Movement
+  /**************************
+   *                        *
+   * Snake Moving (method)  *
+   *                        *
+   * snakeMoving()          *
+   *    Give UIImageView    *
+   *    to have their       *
+   *    movement and check  *
+   *    collisions by using *
+   *   CGRectIntersectsRect *
+   *                        *
+   **************************/
+
   func snakeMoving(){
     let sX = self.sHead.frame.origin.x;
     let sY = self.sHead.frame.origin.y;
@@ -177,11 +266,21 @@ class Game: UIViewController{
     
     if(CGRectIntersectsRect(sHead.frame, snakeBody.frame)){
       print("The snake head has collision with food");
+      //place the food in the grid
     }
     
     //sHead4.frame = CGRectMake(sHead3.frame.origin.x, sHead3.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
   }
   
+  
+  /**************************
+   *                        *
+   * viewDidLoad()          *
+   * run once before every  *
+   * methods started        *
+   *                        *
+   **************************/
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -216,6 +315,16 @@ class Game: UIViewController{
     // Dispose of any resources that can be recreated.
   }
   
+  /**************************
+   *                        *
+   * RandomSnakeBody()      *
+   *  Get random numbers    *
+   *  for food providing in *
+   *  different positions   *
+   *  with cteating new     *
+   *  UIImageView object    *
+   **************************/
+  
   func RandomSnakeBody(){
     let tempX = [20,40,60,80,100,120,140,160,180,200,220,
       240,260,280,300,320,340,360,380,400,420,440,460,480,500,520];
@@ -237,6 +346,15 @@ class Game: UIViewController{
     sBodyImage.frame = CGRectMake(rX,rY,SNAKEWITH,SNAKEHEIGHT);
     sBodyImage.layer.backgroundColor = UIColor.greenColor().CGColor;
   }
+
+  /**************************
+   *                        *
+   * reset()                *
+   * method does restart    *
+   * and reset to very      *
+   * begainning of the game *
+   *                        *
+   **************************/
   
   func reset(){
     //restart game

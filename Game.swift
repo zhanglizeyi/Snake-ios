@@ -47,6 +47,7 @@ class Game: UIViewController{
   //direction of changing movement
   var dx = CGFloat(20);
   var dy = CGFloat(0);
+  var checkDirection = false;
   
 
   struct Variable{
@@ -61,98 +62,106 @@ class Game: UIViewController{
    **************************/
   
   func  MoveLeft(){
-    if(startButton.hidden){
+    if(checkDirection == false){
       dy = 0;
       dx = -20;
-      startButton.hidden = true;
+      //startButton.hidden = true;
+      print("move left");
+      checkDirection = true;
     }
   }
   
   func  MoveRight(){
-    if(startButton.hidden){
+    if(checkDirection == false){
       dy = 0;
       dx = 20;
-      startButton.hidden = true;
+      //startButton.hidden = true;
+      print("move right");
+      checkDirection = true;
     }
   }
   
   func  MoveUp(){
-    if(startButton.hidden){
+    if(checkDirection == true){
       dy = -20;
       dx = 0;
-      startButton.hidden = true;
+      //startButton.hidden = true;
+      print("move up");
+      checkDirection = false;
     }
   }
   
   func  MoveDown(){
-    if(startButton.hidden){
+    if(checkDirection == true){
       dy = 20;
       dx = 0;
-      startButton.hidden = true;
+      //startButton.hidden = true;
+      print("move down");
+      checkDirection = false;
     }
   }
   
   ///////////////////////////////////////
 
-  @IBAction func leftButton(sender: AnyObject){
-    if(startButton.hidden){
-      print("left");
-      //sHead.frame.origin.x -= cgfloat;
-      dy = 0;
-      dx = -20;
-      checkBoundary(Rect);
-    
-      upDirection = false;
-      downDirection = false;
-      rightDirection = false;
-      leftDirection = true;
-    }
-  }
-  
-  @IBAction func rightButton(sender: AnyObject){
-    if(startButton.hidden){
-      print("right");
-      //sHead.frame.origin.x += cgfloat;
-      dy = 0;
-      dx = 20;
-      checkBoundary(Rect);
-      
-      upDirection = false;
-      downDirection = false;
-      rightDirection = true;
-      leftDirection = false;
-    }
-  }
-  
-  @IBAction func upButton(sender: AnyObject){
-    if(startButton.hidden){
-      print("up");
-      //sHead.frame.origin.y -= cgfloat;
-      dx = 0;
-      dy = -20;
-      checkBoundary(Rect);
-      
-      upDirection = true;
-      downDirection = false;
-      rightDirection = false;
-      leftDirection = false;
-    }
-  }
-  
-  @IBAction func downButton(sender: AnyObject){
-    if(startButton.hidden){
-      print("down");
-      //sHead.frame.origin.y += cgfloat;
-      dx = 0;
-      dy = 20;
-      checkBoundary(Rect);
-
-      upDirection = false;
-      downDirection = true;
-      rightDirection = false;
-      leftDirection = false;
-    }
-  }
+//  @IBAction func leftButton(sender: AnyObject){
+//    if(startButton.hidden){
+//      print("left");
+//      //sHead.frame.origin.x -= cgfloat;
+//      dy = 0;
+//      dx = -20;
+//      checkBoundary(Rect);
+//    
+//      upDirection = false;
+//      downDirection = false;
+//      rightDirection = false;
+//      leftDirection = true;
+//    }
+//  }
+//  
+//  @IBAction func rightButton(sender: AnyObject){
+//    if(startButton.hidden){
+//      print("right");
+//      //sHead.frame.origin.x += cgfloat;
+//      dy = 0;
+//      dx = 20;
+//      checkBoundary(Rect);
+//      
+//      upDirection = false;
+//      downDirection = false;
+//      rightDirection = true;
+//      leftDirection = false;
+//    }
+//  }
+//  
+//  @IBAction func upButton(sender: AnyObject){
+//    if(startButton.hidden){
+//      print("up");
+//      //sHead.frame.origin.y -= cgfloat;
+//      dx = 0;
+//      dy = -20;
+//      checkBoundary(Rect);
+//      
+//      upDirection = true;
+//      downDirection = false;
+//      rightDirection = false;
+//      leftDirection = false;
+//    }
+//  }
+//  
+//  @IBAction func downButton(sender: AnyObject){
+//    if(startButton.hidden){
+//      print("down");
+//      //sHead.frame.origin.y += cgfloat;
+//      dx = 0;
+//      dy = 20;
+//      checkBoundary(Rect);
+//
+//      upDirection = false;
+//      downDirection = true;
+//      rightDirection = false;
+//      leftDirection = false;
+//    }
+//  }
   
   
   /**************************
@@ -296,10 +305,10 @@ class Game: UIViewController{
     
     self.view.addSubview(gameBackGround);
     self.view.addSubview(Rect);
-    self.view.addSubview(rightButtonDisplay);
-    self.view.addSubview(leftButtonDisplay);
-    self.view.addSubview(upButtonDisplay);
-    self.view.addSubview(downButtonDisplay);
+//    self.view.addSubview(rightButtonDisplay);
+//    self.view.addSubview(leftButtonDisplay);
+//    self.view.addSubview(upButtonDisplay);
+//    self.view.addSubview(downButtonDisplay);
     self.view.addSubview(sScoreLabel);
     self.view.addSubview(startButton);
     self.view.addSubview(snakeBody);
@@ -308,12 +317,49 @@ class Game: UIViewController{
     self.view.addSubview(sHead1);
     self.view.addSubview(sHead2);
     self.view.addSubview(sHead3);
+    
+    swipeDirection();
+    
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning();
     // Dispose of any resources that can be recreated.
   }
+  
+  /****************************
+   *                          *
+   * swipeDirection()         *
+   *                          *
+   * create object            *
+   * UISwipeGertureRecognizer *
+   * to make screen response  *
+   * the actions              *
+   *                          *
+   ****************************/
+  
+  func swipeDirection(){
+    
+    checkDirection = true;
+    
+    let sLeft = UISwipeGestureRecognizer(target: self, action: Selector("MoveLeft"));
+    sLeft.direction = UISwipeGestureRecognizerDirection.Left;
+    self.view.addGestureRecognizer(sLeft);
+    
+    let sRight = UISwipeGestureRecognizer(target: self, action: Selector("MoveRight"));
+    sRight.direction = UISwipeGestureRecognizerDirection.Right;
+    self.view.addGestureRecognizer(sRight);
+    
+    let sUp = UISwipeGestureRecognizer(target: self, action: Selector("MoveUp"));
+    sUp.direction = UISwipeGestureRecognizerDirection.Up;
+    self.view.addGestureRecognizer(sUp);
+    
+    let sDown = UISwipeGestureRecognizer(target: self, action: Selector("MoveDown"));
+    sDown.direction = UISwipeGestureRecognizerDirection.Down;
+    self.view.addGestureRecognizer(sDown);
+    
+  }
+  
   
   /**************************
    *                        *

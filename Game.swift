@@ -245,10 +245,10 @@ class Game: UIViewController{
    **************************/
  
   func checkBoundary(x: UIView){
-//      if(snake[0].frame.origin.x < x.frame.origin.x ||
-//        snake[0].frame.origin.x > x.frame.width){ reset(); }
-//      else if(snake[0].frame.origin.y < x.frame.origin.y ||
-//        snake[0].frame.origin.y > x.frame.height){ reset(); }
+      if(snake[0].frame.origin.x < x.frame.origin.x ||
+        snake[0].frame.origin.x > x.frame.width){ reset(); }
+      else if(snake[0].frame.origin.y < x.frame.origin.y ||
+        snake[0].frame.origin.y > x.frame.height){ reset(); }
   }
   
   /**************************
@@ -272,15 +272,18 @@ class Game: UIViewController{
     sHead2.frame = CGRectMake(sHead1.frame.origin.x, sHead1.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
     sHead1.frame = CGRectMake(sHead.frame.origin.x, sHead.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
     sHead.frame = CGRectMake(sX+dx, sY+dy, SNAKEWITH, SNAKEHEIGHT);
+  
     
-    if(CGRectIntersectsRect(sHead.frame, snakeBody.frame)){
+    if(CGRectIntersectsRect(snake[0].frame, snakeBody.frame)){
       print("The snake head has collision with food");
+      snakeBody.hidden = true;
+      RandomSnakeBody();
+      snake.append(snakeBody);
       //place the food in the grid
     }
     
     //sHead4.frame = CGRectMake(sHead3.frame.origin.x, sHead3.frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
   }
-  
   
   /**************************
    *                        *
@@ -294,30 +297,40 @@ class Game: UIViewController{
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     
-    //    let image = UIImage(named: "sStartingPage.png");
-    //    let imageview = UIImageView(image: image);
-    //    self.view.addSubview(imageview);
+    //clear array
+    if(!snake.isEmpty){
+      snake.removeAll();
+    }
     
     startButton.hidden = false;
-    //snake += [sHead];
+    snake.append(sHead);
+    snake.append(sHead1);
+    snake.append(sHead2);
+    snake.append(sHead3);
     Rect.layer.borderWidth = 1.0;
     Rect.layer.borderColor = UIColor.blackColor().CGColor;
     
     self.view.addSubview(gameBackGround);
     self.view.addSubview(Rect);
-//    self.view.addSubview(rightButtonDisplay);
-//    self.view.addSubview(leftButtonDisplay);
-//    self.view.addSubview(upButtonDisplay);
-//    self.view.addSubview(downButtonDisplay);
+    //self.view.addSubview(rightButtonDisplay);
+    //self.view.addSubview(leftButtonDisplay);
+    //self.view.addSubview(upButtonDisplay);
+    //self.view.addSubview(downButtonDisplay);
     self.view.addSubview(sScoreLabel);
     self.view.addSubview(startButton);
     self.view.addSubview(snakeBody);
     self.view.addSubview(sBodyImage);
-    self.view.addSubview(sHead);
-    self.view.addSubview(sHead1);
-    self.view.addSubview(sHead2);
-    self.view.addSubview(sHead3);
+    self.view.addSubview(snake[0]);
+    self.view.addSubview(snake[1]);
+    self.view.addSubview(snake[2]);
+    self.view.addSubview(snake[3]);
     
+    var i = 0;
+    while i < snake.count{
+      print(snake[i]);
+      i++;
+    }
+
     swipeDirection();
     
   }
@@ -337,7 +350,6 @@ class Game: UIViewController{
    * the actions              *
    *                          *
    ****************************/
-  
   func swipeDirection(){
     
     checkDirection = true;

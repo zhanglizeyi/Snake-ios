@@ -90,6 +90,28 @@
                                 <rect key="frame" x="100" y="60" width="20" height="20"/>
                                 <animations/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzM-tj-rOb">
+                                <rect key="frame" x="166" y="125" width="237" height="70"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                <state key="normal" title="Game Over">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="gameOverAction:" destination="RrN-dz-JaJ" eventType="touchDown" id="5Q4-kD-0rj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gq-zm-UGs">
+                                <rect key="frame" x="166" y="123" width="237" height="70"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                <state key="normal" title="YOU WIN">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="winAction:" destination="RrN-dz-JaJ" eventType="touchDown" id="zt3-eg-3mR"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GameBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-FU-hju">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <animations/>
@@ -102,13 +124,15 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="gameBackGround" destination="qeO-FU-hju" id="GFT-W3-pTD"/>
+                        <outlet property="gameBackGround" destination="qeO-FU-hju" id="adS-gF-qaj"/>
+                        <outlet property="gameOverLabel" destination="lzM-tj-rOb" id="LNH-EN-bP7"/>
                         <outlet property="sHead" destination="W1Q-0S-shR" id="OYe-GS-xhL"/>
                         <outlet property="sHead1" destination="tAp-eV-VdG" id="sJE-fq-JAd"/>
                         <outlet property="sHead2" destination="Hn2-dJ-ymd" id="zNh-4r-R3x"/>
                         <outlet property="sHead3" destination="sWe-bD-MZd" id="eL3-ED-dzK"/>
                         <outlet property="sScoreLabel" destination="ExP-VT-0j5" id="L6J-QK-cen"/>
                         <outlet property="startButton" destination="pwf-QG-IJo" id="DDm-k7-B2l"/>
+                        <outlet property="winLabel" destination="1Gq-zm-UGs" id="aGZ-jh-LSx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7p-2f-N4N" userLabel="First Responder" sceneMemberID="firstResponder"/>

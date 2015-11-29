@@ -43,9 +43,11 @@ class Game: UIViewController{
   var dy             = CGFloat(0);
   var checkDirection = false;
   var count = 1;
-  
+  var sX = CGFloat(160);
+  var sY = CGFloat(60);
 
   struct Variable{
+    
   }
   
   /**************************
@@ -136,7 +138,6 @@ class Game: UIViewController{
       gameOverLabel.hidden = true;
       startButton.hidden   = true;
       winLabel.hidden      = true;
-      RandomSnakeBody();
       //animation loop for snake moving inside
       snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3,
         target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
@@ -151,7 +152,6 @@ class Game: UIViewController{
       winLabel.hidden      = true;
       startButton.hidden   = true;
       gameOverLabel.hidden = true;
-      RandomSnakeBody();
       //animation loop for snake moving inside
       snakeTimer = NSTimer.scheduledTimerWithTimeInterval(0.3,
         target: self, selector: "snakeMoving", userInfo: nil, repeats: true);
@@ -217,13 +217,13 @@ class Game: UIViewController{
    **************************/
 
   func snakeMoving(){
-    let sX = self.sHead.frame.origin.x;
-    let sY = self.sHead.frame.origin.y;
     var body = 0;
+    sX = sX + dx;
+    sY = sY + dy;
     
+    snake[0].frame = CGRectMake(sX, sY, SNAKEWITH, SNAKEHEIGHT);
     checkBoundary();
-    sHead.frame = CGRectMake(sX+dx, sY+dy, SNAKEWITH, SNAKEHEIGHT);
-
+    
     for var i=264; i<snake.count; i++ {
       if(CGRectIntersectsRect(snake[0].frame, snake[i].frame)){
         print("game over");
@@ -237,8 +237,10 @@ class Game: UIViewController{
       body += 1;
       sFood.hidden = true;
       snake.append(sFood);
-      snake[body].frame = CGRectMake(snake[body-1].frame.origin.x, snake[body-1].frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
+      
+      snake[body].frame = CGRectMake(snake[body].frame.origin.x, snake[body].frame.origin.y, SNAKEWITH, SNAKEHEIGHT);
       snake[body].hidden = false;
+      print(snake[body]);
       self.view.addSubview(snake[body]);
       point            += 10;
       
@@ -277,6 +279,8 @@ class Game: UIViewController{
     point                  = 0;
     scoreUpdate();
     snake.append(sHead);
+    sX = snake[0].frame.origin.x;
+    sY = snake[0].frame.origin.y;
 
     self.view.addSubview(gameBackGround);
     self.view.addSubview(Rect);

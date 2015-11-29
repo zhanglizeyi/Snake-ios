@@ -78,42 +78,6 @@
                                     <action selector="sGameStratingButton:" destination="RrN-dz-JaJ" eventType="touchUpInside" id="jTZ-Pp-3cR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-Ab-eA7">
-                                <rect key="frame" x="455" y="208" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="up"/>
-                                <connections>
-                                    <action selector="upButton:" destination="RrN-dz-JaJ" eventType="touchDown" id="J25-t3-YKJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-af-vXI">
-                                <rect key="frame" x="411" y="236" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="left"/>
-                                <connections>
-                                    <action selector="leftButton:" destination="RrN-dz-JaJ" eventType="touchDown" id="q5A-sb-eUp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBI-hf-LAR">
-                                <rect key="frame" x="451" y="270" width="38" height="30"/>
-                                <animations/>
-                                <state key="normal" title="down"/>
-                                <connections>
-                                    <action selector="downButton:" destination="RrN-dz-JaJ" eventType="touchDown" id="t4h-dz-ePp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4U-PT-HWm">
-                                <rect key="frame" x="493" y="236" width="32" height="30"/>
-                                <animations/>
-                                <state key="normal" title="right"/>
-                                <connections>
-                                    <action selector="rightButton:" destination="RrN-dz-JaJ" eventType="touchDown" id="hUL-3c-2W1"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sBody.png" translatesAutoresizingMaskIntoConstraints="NO" id="uqi-Bm-BPC">
-                                <rect key="frame" x="420" y="100" width="20" height="20"/>
-                                <animations/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sHead.png" translatesAutoresizingMaskIntoConstraints="NO" id="tAp-eV-VdG">
                                 <rect key="frame" x="140" y="60" width="20" height="20"/>
                                 <animations/>
@@ -138,18 +102,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="downButtonDisplay" destination="uBI-hf-LAR" id="ng3-Dm-sti"/>
                         <outlet property="gameBackGround" destination="qeO-FU-hju" id="GFT-W3-pTD"/>
-                        <outlet property="leftButtonDisplay" destination="BvF-af-vXI" id="vMm-fB-Duf"/>
-                        <outlet property="rightButtonDisplay" destination="a4U-PT-HWm" id="Kk3-an-mbH"/>
                         <outlet property="sHead" destination="W1Q-0S-shR" id="OYe-GS-xhL"/>
                         <outlet property="sHead1" destination="tAp-eV-VdG" id="sJE-fq-JAd"/>
                         <outlet property="sHead2" destination="Hn2-dJ-ymd" id="zNh-4r-R3x"/>
                         <outlet property="sHead3" destination="sWe-bD-MZd" id="eL3-ED-dzK"/>
                         <outlet property="sScoreLabel" destination="ExP-VT-0j5" id="L6J-QK-cen"/>
-                        <outlet property="snakeBody" destination="uqi-Bm-BPC" id="WeF-tv-k0k"/>
                         <outlet property="startButton" destination="pwf-QG-IJo" id="DDm-k7-B2l"/>
-                        <outlet property="upButtonDisplay" destination="CGM-Ab-eA7" id="zSn-Xt-g9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7p-2f-N4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,7 +118,6 @@
     </scenes>
     <resources>
         <image name="GameBackground.png" width="1230" height="600"/>
-        <image name="sBody.png" width="256" height="256"/>
         <image name="sHead.png" width="256" height="256"/>
         <image name="sStartingPage.png" width="750" height="412"/>
     </resources>
